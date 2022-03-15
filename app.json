@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "fresco-example",
+    "slug": "fresco-example",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "fresco-example"
+}
