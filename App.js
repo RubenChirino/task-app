@@ -1,21 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import "react-native-gesture-handler";
+import React from "react";
+
+// Redux
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+
+// Context
+// import { ContextProvider } from "./src/context";
+
+/* === Navigation === */
+import { NavigationContainer } from "@react-navigation/native";
+
+// Types
+// import MyStack from "./src/navigation/Stack";
+import MyBottomTab from "./src/navigation/Tab";
+
+// Reducer
+import themeReducer from "./src/redux/reducers/themeReducer";
+
+const store = createStore(
+  themeReducer,
+  // Redux Devtools (Navigator extension)
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        {/* <ContextProvider>   barStyle={statusBarStyle} */}
+        <MyBottomTab />
+        {/* </ContextProvider> */}
+      </NavigationContainer>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
